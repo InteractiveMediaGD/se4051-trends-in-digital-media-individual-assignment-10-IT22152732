@@ -7,10 +7,6 @@ public class UIStatusController : MonoBehaviour
 
     private void Start()
     {
-        if (statusText != null)
-        {
-            statusText.text = "Move into the zone to activate study mode";
-        }
     }
 
     private void OnTriggerEnter(Collider other)

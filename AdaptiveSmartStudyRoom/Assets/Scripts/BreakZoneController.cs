@@ -7,19 +7,27 @@ public class BreakZoneController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && statusText != null)
+        if (other.CompareTag("Player"))
         {
-            statusText.text = "Break Mode Activated - Relax for a moment";
             Debug.Log("Break mode activated");
+
+            if (statusText != null)
+            {
+                statusText.text = "Break Mode Activated - Relax for a moment";
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && statusText != null)
+        if (other.CompareTag("Player"))
         {
-            statusText.text = "Exited Break Mode";
             Debug.Log("Break mode deactivated");
+
+            if (statusText != null)
+            {
+                statusText.text = "Exited Break Mode";
+            }
         }
     }
 }
