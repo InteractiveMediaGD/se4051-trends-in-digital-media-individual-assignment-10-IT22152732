@@ -11,6 +11,9 @@ public class SmartStudyManager : MonoBehaviour
     private bool isStudying = false;
     private bool warningShown = false;
 
+    public GameObject studyLight;
+    public GameObject breakLight;
+
     void Update()
     {
         if (isStudying)
