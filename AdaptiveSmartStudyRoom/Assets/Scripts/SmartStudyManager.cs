@@ -39,6 +39,9 @@ public class SmartStudyManager : MonoBehaviour
 
     void Start()
     {
+
+        statusText.text = "Welcome to Smart Study Room. Move to the desk to begin.";
+
         if (statusText != null)
             statusText.text = "Move to the desk to begin your study session.";
 
