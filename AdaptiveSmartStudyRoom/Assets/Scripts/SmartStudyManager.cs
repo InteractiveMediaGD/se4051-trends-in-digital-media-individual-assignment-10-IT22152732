@@ -7,12 +7,14 @@ public class SmartStudyManager : MonoBehaviour
     public Light sceneLight;
     public SoundManager soundManager;
 
+    public GameObject studyLight;
+    public GameObject breakLight;
+
+    public Light lampLight;
+
     private float studyTimer = 0f;
     private bool isStudying = false;
     private bool warningShown = false;
-
-    public GameObject studyLight;
-    public GameObject breakLight;
 
     void Update()
     {
@@ -22,8 +24,12 @@ public class SmartStudyManager : MonoBehaviour
 
             if (studyTimer >= 10f && !warningShown)
             {
-                statusText.text = "You have been studying for a while. Consider taking a break.";
-                sceneLight.color = Color.yellow;
+                if (statusText != null)
+                    statusText.text = "You have been studying for a while. Consider taking a break.";
+
+                if (sceneLight != null)
+                    sceneLight.color = Color.yellow;
+
                 warningShown = true;
             }
         }
@@ -35,8 +41,24 @@ public class SmartStudyManager : MonoBehaviour
         studyTimer = 0f;
         warningShown = false;
 
-        statusText.text = "Study Mode Activated";
-        sceneLight.color = Color.white;
+        if (statusText != null)
+            statusText.text = "Study Mode Activated - Focus!";
+
+        if (sceneLight != null)
+            sceneLight.color = Color.white;
+
+        if (studyLight != null)
+            studyLight.SetActive(true);
+
+        if (breakLight != null)
+            breakLight.SetActive(false);
+
+        if (lampLight != null)
+        {
+            lampLight.enabled = true;
+            lampLight.color = Color.white;
+            lampLight.intensity = 2.0f;
+        }
 
         if (soundManager != null)
             soundManager.PlayStudySound();
@@ -46,10 +68,25 @@ public class SmartStudyManager : MonoBehaviour
     {
         isStudying = false;
 
-        statusText.text = "Break Mode Activated - Relax for a moment";
-        sceneLight.color = Color.blue;
+        if (statusText != null)
+            statusText.text = "Break Mode - Relax";
 
-        if (soundManager != null)
+        if (sceneLight != null)
+            sceneLight.color = new Color(0.6f, 0.7f, 1f); // soft blue
+
+        if (studyLight != null)
+            studyLight.SetActive(false);
+
+        if (breakLight != null)
+            breakLight.SetActive(true);
+
+        if (lampLight != null)
+        {
+            lampLight.enabled = true;
+            lampLight.color = new Color(1f, 0.9f, 0.7f); // softer warm
+            lampLight.intensity = 1.2f;
+
+            if (soundManager != null)
             soundManager.PlayBreakSound();
     }
 
@@ -57,8 +94,21 @@ public class SmartStudyManager : MonoBehaviour
     {
         isStudying = false;
 
-        statusText.text = "Task Complete - Interactive session finished";
-        sceneLight.color = Color.green;
+        if (statusText != null)
+            statusText.text = "Task Complete - Well done!";
+
+        if (studyLight != null)
+            studyLight.SetActive(false);
+
+        if (breakLight != null)
+            breakLight.SetActive(false);
+
+        if (lampLight != null)
+        {
+            lampLight.enabled = true;
+            lampLight.color = new Color(0.6f, 1f, 0.6f); // soft success green
+            lampLight.intensity = 1.8f;
+        }
 
         if (soundManager != null)
             soundManager.PlayCompleteSound();
