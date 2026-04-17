@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ZoneTrigger : MonoBehaviour
 {
-    public string zoneType; // "study", "break", "completion"
+    public string zoneType; // study, break, completion
 
     private SmartStudyManager manager;
 
@@ -13,7 +13,7 @@ public class ZoneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && manager != null)
         {
             if (zoneType == "study")
             {
@@ -22,19 +22,17 @@ public class ZoneTrigger : MonoBehaviour
             else if (zoneType == "break")
             {
                 manager.ExitStudy();
-                manager.statusText.text = "Break Mode Activated - Relax for a moment";
             }
             else if (zoneType == "completion")
             {
-                manager.ExitStudy();
-                manager.statusText.text = "Task Complete - Interactive session finished";
+                manager.CompleteTask();
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && manager != null)
         {
             if (zoneType == "study")
             {

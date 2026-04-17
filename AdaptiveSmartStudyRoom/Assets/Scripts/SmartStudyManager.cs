@@ -16,6 +16,10 @@ public class SmartStudyManager : MonoBehaviour
     private bool isStudying = false;
     private bool warningShown = false;
 
+    private float awayTimer = 0f;
+    private bool isInStudyZone = false;
+    private bool distractionWarningShown = false;
+
     void Update()
     {
         if (isStudying)
@@ -33,13 +37,41 @@ public class SmartStudyManager : MonoBehaviour
                 warningShown = true;
             }
         }
+
+        if (!isInStudyZone)
+        {
+            awayTimer += Time.deltaTime;
+
+            if (awayTimer >= 8f && !distractionWarningShown)
+            {
+                if (statusText != null)
+                    statusText.text = "You are away from the study area. Please return to continue your session.";
+
+                if (sceneLight != null)
+                    sceneLight.color = new Color(0.95f, 0.9f, 0.75f);
+
+                if (lampLight != null)
+                {
+                    lampLight.enabled = true;
+                    lampLight.color = new Color(1f, 0.95f, 0.8f);
+                    lampLight.intensity = 1.0f;
+                }
+
+                distractionWarningShown = true;
+            }
+        }
     }
 
     public void EnterStudy()
     {
         isStudying = true;
+        isInStudyZone = true;
+
         studyTimer = 0f;
+        awayTimer = 0f;
+
         warningShown = false;
+        distractionWarningShown = false;
 
         if (statusText != null)
             statusText.text = "Study Mode Activated - Focus!";
@@ -67,12 +99,15 @@ public class SmartStudyManager : MonoBehaviour
     public void ExitStudy()
     {
         isStudying = false;
+        isInStudyZone = false;
+        awayTimer = 0f;
+        distractionWarningShown = false;
 
         if (statusText != null)
-            statusText.text = "Break Mode - Relax";
+            statusText.text = "Break Mode Activated - Take a short rest and relax.";
 
         if (sceneLight != null)
-            sceneLight.color = new Color(0.6f, 0.7f, 1f); // soft blue
+            sceneLight.color = new Color(0.75f, 0.8f, 0.95f);
 
         if (studyLight != null)
             studyLight.SetActive(false);
@@ -83,19 +118,24 @@ public class SmartStudyManager : MonoBehaviour
         if (lampLight != null)
         {
             lampLight.enabled = true;
-            lampLight.color = new Color(1f, 0.9f, 0.7f); // softer warm
-            lampLight.intensity = 1.2f;
+            lampLight.color = new Color(1f, 0.92f, 0.8f);
+            lampLight.intensity = 1.0f;
+        }
 
-            if (soundManager != null)
+        if (soundManager != null)
             soundManager.PlayBreakSound();
     }
 
     public void CompleteTask()
     {
         isStudying = false;
+        isInStudyZone = false;
 
         if (statusText != null)
-            statusText.text = "Task Complete - Well done!";
+            statusText.text = "Session Complete - Great job. Your study interaction has finished successfully.";
+
+        if (sceneLight != null)
+            sceneLight.color = new Color(0.85f, 1f, 0.85f);
 
         if (studyLight != null)
             studyLight.SetActive(false);
@@ -106,8 +146,8 @@ public class SmartStudyManager : MonoBehaviour
         if (lampLight != null)
         {
             lampLight.enabled = true;
-            lampLight.color = new Color(0.6f, 1f, 0.6f); // soft success green
-            lampLight.intensity = 1.8f;
+            lampLight.color = new Color(0.75f, 1f, 0.75f);
+            lampLight.intensity = 1.4f;
         }
 
         if (soundManager != null)
