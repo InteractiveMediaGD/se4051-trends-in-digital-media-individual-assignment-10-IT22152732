@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class SmartStudyManager : MonoBehaviour
 {
@@ -23,69 +24,78 @@ public class SmartStudyManager : MonoBehaviour
     private int focusScore = 100;
     private int breakCount = 0;
 
+    private string[] smartTips = {
+        "Take a deep breath.",
+        "Stretch your body.",
+        "Drink some water.",
+        "Focus on one task at a time."
+    };
+
+    private Color targetSceneLightColor;
+    private Color targetLampLightColor;
+    private float targetLampIntensity;
+
+    private bool isShowingTemporaryMessage = false;
+
     void Start()
     {
         if (statusText != null)
             statusText.text = "Move to the desk to begin your study session.";
+
+        targetSceneLightColor = sceneLight.color;
+        targetLampLightColor = lampLight.color;
+        targetLampIntensity = lampLight.intensity;
     }
 
     void Update()
     {
+        // Smooth lighting
+        sceneLight.color = Color.Lerp(sceneLight.color, targetSceneLightColor, Time.deltaTime * 2f);
+        lampLight.color = Color.Lerp(lampLight.color, targetLampLightColor, Time.deltaTime * 2f);
+        lampLight.intensity = Mathf.Lerp(lampLight.intensity, targetLampIntensity, Time.deltaTime * 2f);
+
+        // Study behavior
         if (isStudying)
         {
             studyTimer += Time.deltaTime;
-
             focusScore = Mathf.Min(100, focusScore + 1);
 
             if (studyTimer >= 10f && !warningShown)
             {
-                if (statusText != null)
-                    statusText.text = "You have been studying for a while. Consider taking a break.";
+                string tip = smartTips[Random.Range(0, smartTips.Length)];
+                StartCoroutine(ShowTemporaryMessage("You have been studying for a while. " + tip, 3f));
 
-                if (sceneLight != null)
-                    sceneLight.color = Color.yellow;
+                targetSceneLightColor = Color.yellow;
+                targetLampLightColor = new Color(1f, 0.95f, 0.8f);
+                targetLampIntensity = 1.4f;
 
                 warningShown = true;
             }
         }
 
-        if (!isInStudyZone)
+        // Away warning
+        if (!isInStudyZone && !isStudying)
         {
             awayTimer += Time.deltaTime;
 
             if (awayTimer >= 8f && !distractionWarningShown)
             {
-                if (statusText != null)
-                    statusText.text = "You are away from the study area. Please return to continue your session.";
+                StartCoroutine(ShowTemporaryMessage(
+                    "You are away from the study area. Please return.", 3f));
 
-                if (sceneLight != null)
-                    sceneLight.color = new Color(0.95f, 0.9f, 0.75f);
-
-                if (lampLight != null)
-                {
-                    lampLight.enabled = true;
-                    lampLight.color = new Color(1f, 0.95f, 0.8f);
-                    lampLight.intensity = 1.0f;
-                }
+                targetSceneLightColor = new Color(0.95f, 0.9f, 0.75f);
 
                 distractionWarningShown = true;
             }
         }
 
-        if (focusScore <= 60)
+        // Low focus alert
+        if (focusScore <= 60 && !isStudying && !isShowingTemporaryMessage)
         {
-            if (statusText != null)
-                statusText.text = "Context Alert: Focus score is low. Please return to the study area.";
+            StartCoroutine(ShowTemporaryMessage(
+                "Focus is low. Return to study.", 3f));
 
-            if (sceneLight != null)
-                sceneLight.color = new Color(1f, 0.82f, 0.82f);
-
-            if (lampLight != null)
-            {
-                lampLight.enabled = true;
-                lampLight.color = new Color(1f, 0.88f, 0.88f);
-                lampLight.intensity = 1.0f;
-            }
+            targetSceneLightColor = new Color(1f, 0.82f, 0.82f);
         }
     }
 
@@ -100,75 +110,44 @@ public class SmartStudyManager : MonoBehaviour
         warningShown = false;
         distractionWarningShown = false;
 
-        if (statusText != null)
-            statusText.text = "Study Mode Activated - Focus Score: " + focusScore;
+        // Smart feedback
+        if (focusScore >= 90)
+            statusText.text = "Excellent focus! Score: " + focusScore;
+        else if (focusScore >= 70)
+            statusText.text = "Good focus! Score: " + focusScore;
+        else if (focusScore >= 50)
+            statusText.text = "Focus improving. Score: " + focusScore;
+        else
+            statusText.text = "Low focus. Try harder. Score: " + focusScore;
 
-        if (sceneLight != null)
-            sceneLight.color = Color.white;
+        targetSceneLightColor = new Color(0.95f, 0.95f, 1f);
+        targetLampLightColor = new Color(1f, 1f, 0.95f);
+        targetLampIntensity = 1.8f;
 
-        if (studyLight != null)
-            studyLight.SetActive(true);
+        studyLight.SetActive(true);
+        breakLight.SetActive(false);
 
-        if (breakLight != null)
-            breakLight.SetActive(false);
-
-        if (lampLight != null)
-        {
-            lampLight.enabled = true;
-            lampLight.color = Color.white;
-            lampLight.intensity = 2.0f;
-        }
-
-        if (soundManager != null)
-            soundManager.PlayStudySound();
-
-        if (focusScore > 60)
-        {
-            if (statusText != null)
-                statusText.text = "Study Mode Activated - Focus Score: " + focusScore + " (Good focus)";
-
-            if (sceneLight != null)
-                sceneLight.color = new Color(0.95f, 0.95f, 1f);
-
-            if (lampLight != null)
-            {
-                lampLight.enabled = true;
-                lampLight.color = new Color(1f, 1f, 0.95f);
-                lampLight.intensity = 1.8f;
-            }
-        }
+        soundManager.PlayStudySound();
     }
 
     public void ExitStudy()
     {
         isStudying = false;
         isInStudyZone = false;
-        awayTimer = 0f;
-        distractionWarningShown = false;
+
         breakCount++;
-        focusScore -= 10;
+        focusScore = Mathf.Max(0, focusScore - 10);
 
-        if (statusText != null)
-            statusText.text = "Break Mode Activated - Focus Score: " + focusScore;
+        statusText.text = "Break Mode - Score: " + focusScore;
 
-        if (sceneLight != null)
-            sceneLight.color = new Color(0.75f, 0.8f, 0.95f);
+        targetSceneLightColor = new Color(0.75f, 0.8f, 0.95f);
+        targetLampLightColor = new Color(1f, 0.92f, 0.8f);
+        targetLampIntensity = 1.0f;
 
-        if (studyLight != null)
-            studyLight.SetActive(false);
+        studyLight.SetActive(false);
+        breakLight.SetActive(true);
 
-        if (breakLight != null)
-            breakLight.SetActive(true);
-
-        if (lampLight != null)
-        {
-            lampLight.enabled = true;
-            lampLight.color = new Color(1f, 0.92f, 0.8f);
-            lampLight.intensity = 1.0f;
-        }
-
-        if (soundManager != null)
-            soundManager.PlayBreakSound();
+        soundManager.PlayBreakSound();
     }
 
     public void CompleteTask()
@@ -176,26 +155,28 @@ public class SmartStudyManager : MonoBehaviour
         isStudying = false;
         isInStudyZone = false;
 
-        if (statusText != null)
-            statusText.text = "Session Complete - Final Focus Score: " + focusScore;
+        statusText.text = "Session Complete! Final Score: " + focusScore;
 
-        if (sceneLight != null)
-            sceneLight.color = new Color(0.85f, 1f, 0.85f);
+        targetSceneLightColor = new Color(0.85f, 1f, 0.85f);
+        targetLampLightColor = new Color(0.75f, 1f, 0.75f);
+        targetLampIntensity = 1.4f;
 
-        if (studyLight != null)
-            studyLight.SetActive(false);
+        studyLight.SetActive(false);
+        breakLight.SetActive(false);
 
-        if (breakLight != null)
-            breakLight.SetActive(false);
+        soundManager.PlayCompleteSound();
+    }
 
-        if (lampLight != null)
-        {
-            lampLight.enabled = true;
-            lampLight.color = new Color(0.75f, 1f, 0.75f);
-            lampLight.intensity = 1.4f;
-        }
+    IEnumerator ShowTemporaryMessage(string message, float duration)
+    {
+        if (isShowingTemporaryMessage) yield break;
 
-        if (soundManager != null)
-            soundManager.PlayCompleteSound();
+        isShowingTemporaryMessage = true;
+
+        statusText.text = message;
+
+        yield return new WaitForSeconds(duration);
+
+        isShowingTemporaryMessage = false;
     }
 }
