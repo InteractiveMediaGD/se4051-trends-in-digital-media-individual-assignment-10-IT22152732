@@ -1,15 +1,12 @@
 using UnityEngine;
-using TMPro;
 
 public class CrystalCollect : MonoBehaviour
 {
-    public TMP_Text scoreText;
     public GameObject effect;
     public GameObject completeText;
 
-    private int score = 0;
-    private AudioSource audioSource;
     private bool collected = false;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -27,8 +24,8 @@ public class CrystalCollect : MonoBehaviour
         {
             collected = true;
 
-            score++;
-            scoreText.text = "Score: " + score;
+            // ? Add score globally
+            GameManager.instance.AddScore();
 
             if (effect != null)
             {
@@ -43,9 +40,6 @@ public class CrystalCollect : MonoBehaviour
             if (completeText != null)
             {
                 completeText.SetActive(true);
-
-                TMP_Text txt = completeText.GetComponent<TMP_Text>();
-                txt.text = "Mission Complete: Forest Energy Restored!";
             }
 
             GetComponent<MeshRenderer>().enabled = false;

@@ -1,12 +1,120 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MY\\Desktop\\SmartForestSurvivalGuide\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:2:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|c:\\users\\my\\desktop\\y4s2\\tdm\\assignments\\se4051-trends-in-digital-media-individual-assignment-10-it22152732\\smartforestsurvivalguide\\assets\\scripts\\crystalcollect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\crystalcollect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\assets\\scripts\\safezonescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\safezonescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\assets\\scripts\\dangerzonescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dangerzonescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|c:\\users\\my\\desktop\\y4s2\\tdm\\assignments\\se4051-trends-in-digital-media-individual-assignment-10-it22152732\\smartforestsurvivalguide\\assets\\scripts\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|c:\\users\\my\\desktop\\y4s2\\tdm\\assignments\\se4051-trends-in-digital-media-individual-assignment-10-it22152732\\smartforestsurvivalguide\\assets\\scripts\\crystalcollect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{72CBFF4E-18BE-98AF-F874-DF8460CD5C47}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\crystalcollect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DangerZoneScript.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\DangerZoneScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DangerZoneScript.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\DangerZoneScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DangerZoneScript.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAQwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:49:53.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HealthManager.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\HealthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\HealthManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HealthManager.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:50:01.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CrystalCollect.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\CrystalCollect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CrystalCollect.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\CrystalCollect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CrystalCollect.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAQwDoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:49:53.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Assets\\Scripts\\CrystalCollect.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\CrystalCollect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CrystalCollect.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\CrystalCollect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CrystalCollect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:49:53.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SafeZoneScript.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\SafeZoneScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SafeZoneScript.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\SafeZoneScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SafeZoneScript.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:49:53.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\MY\\Desktop\\Y4S2\\TDM\\Assignments\\se4051-trends-in-digital-media-individual-assignment-10-IT22152732\\SmartForestSurvivalGuide\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwCMAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKzSURBVDhP7ZJfSFNRHMd/5\u002B7OxvA2NydqppIzC5uFbVQG2p8HKcGHIKSkP5A6eyoX0Ztk9BSUmxVESvRg6kNKsHoIokI0bG5pWVgtfVAwp7Pc3HKb272/zj1dpJee8tHPwzn3/L7f\u002Bzu/c34H1vlviDxMBaf0fd/6NE\u002B\u002BPILPgWnIy8gDu8UOleml4cxMc4Q5KV1jXXo1p07UmGsiiFe5zg8mo1FrDFUVVcUVC3DyEI1FHZxEvAlUeQmf9PL0O0XkvT9FVSNzKcQSMUd4JcxicrKkmHjuj8xUMFGBl4fbow4Dz/GbdqXv9ARjwbuWDKvD7Xcbhv3DAnMpPBxvNyAAi3V8dKokSMkEBA0TFdiRi9oLXPkb84XyrIoOEcFFCGkc8g/aIolwz9mSuu5f0XCt830rhOKhk1T7Tn/pR8BUOttowmcmncm3Rdjq6z3e280qDCzPQyAa6H9x4nW3vKbcMj/YriUSTvISrwPCWViUEB0i0gksgERDy1EDwUIqCCoOJOaR0TtTXfo2oUVZ/pO/fcZWbXaaU5hJaxOqmajAmrKWsDuUd6bnGFm8GF6tkh65mYoT9tIrE0sroWbH6E0IrSztAcQQjX9FIjeDlAPgmElXOFegM3keH\u002Bu7zu4wR8iFXCH3QNlAWa2op01ZJI39069O0UQ9SS75DlEaYbsgblOaQtdyU3AfbcokjftQJJOyhVV4\u002BeUlV1ISq5fiQY/bP3TncF6lkyYxiJJ47d7R\u002B6tV7\u002B/c66LPZmTotLulvHN3tgRqL23O\u002BTdn3j5VLH/usK64YTFbmzXrmfNsDkQXbowvfIofzDk0e6G0KcxcCvXUV7/DxmINJU3iueKG\u002BTqzLcZEBZZQTIh2QM7Ko2gVgVgJ8FZelbCCCtqZS0HcgHZcRhbT\u002BDQ/JDUeISEywMR11giA3/j6Gy64yb2gAAAAAElFTkSuQmCC",
+              "WhenOpened": "2026-05-05T11:49:53.151Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
