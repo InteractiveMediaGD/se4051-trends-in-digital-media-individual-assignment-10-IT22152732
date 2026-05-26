@@ -1,38 +1,99 @@
 using UnityEngine;
+using System.Collections;
 
 public class SafeZoneScript : MonoBehaviour
 {
     public GameObject safeText;
-    public GameObject warningText;
-    public GameObject completeText;
+    public Light directionalLight;
+    public AudioSource safeAudio;
+    public AudioClip safeClip;
+    public AudioSource backgroundMusic;
 
-    public Light sceneLight;
+    private Coroutine hideRoutine;
+    private bool playedOnce = false;
 
-    private void Start()
+    void Start()
     {
-        safeText.SetActive(false);
+        if (safeText != null)
+        {
+            safeText.SetActive(false);
+        }
+
+        if (safeAudio == null)
+        {
+            safeAudio = GetComponent<AudioSource>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            // Show only safe text
-            safeText.SetActive(true);
-            warningText.SetActive(false);
-            completeText.SetActive(false);
+        if (!other.CompareTag("Player"))
+            return;
 
-            RenderSettings.fog = false;
-            sceneLight.intensity = 1.4f;
+        if (safeText != null)
+        {
+            safeText.SetActive(true);
+
+            if (hideRoutine != null)
+            {
+                StopCoroutine(hideRoutine);
+            }
+
+            hideRoutine = StartCoroutine(HideSafeText());
         }
+
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = 0.08f;
+        }
+
+        if (safeAudio != null)
+        {
+            if (safeClip != null)
+            {
+                safeAudio.PlayOneShot(safeClip, 1f);
+            }
+            else if (safeAudio.clip != null)
+            {
+                safeAudio.PlayOneShot(safeAudio.clip, 1f);
+            }
+            else
+            {
+                UnityEngine.Debug.LogWarning("Safe sound missing: assign Audio Clip or Safe Clip.");
+            }
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Safe AudioSource missing on SafeZone.");
+        }
+
+        if (directionalLight != null)
+        {
+            directionalLight.color = Color.white;
+            directionalLight.intensity = 1.2f;
+        }
+
+        RenderSettings.fog = false;
+
+        UnityEngine.Debug.Log("SAFE ZONE ENTERED: Environment restored");
     }
 
-    private void OnTriggerExit(Collider other)
+    IEnumerator HideSafeText()
     {
-        if (other.CompareTag("Player"))
+        yield return new WaitForSeconds(2f);
+
+        if (safeText != null)
         {
             safeText.SetActive(false);
-            sceneLight.intensity = 1f;
+        }
+    }
+    IEnumerator RestoreBackgroundMusic()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = 0.25f;
         }
     }
 }

@@ -1,51 +1,15 @@
-# ================= UNITY =================
-
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-UserSettings/
-MemoryCaptures/
-
-# Visual Studio / Rider
-.vs/
-.vscode/
-.idea/
-
-# Auto-generated project files
+**/.vs/
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
 *.csproj
-*.unityproj
 *.sln
-*.suo
-*.tmp
 *.user
 *.userprefs
-*.pidb
-*.booproj
-*.svd
-
-# Unity cache
-*.cache
-*.ilk
-*.pdb
-
-# Builds
-*.apk
-*.aab
-*.unitypackage
-
-# Crash logs
-sysinfo.txt
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Debug / logs
-*.log
-
-# ================= IMPORTANT =================
-# DO NOT IGNORE META FILES (Unity needs them)
-# *.meta  <-- KEEP THESE TRACKED
+*.tif
+*.tiff
+*.psd
+**/Terrain.asset
+**/Ground001_N.png
+!*.meta
